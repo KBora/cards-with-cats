@@ -1,0 +1,14 @@
+<div
+  [ngClass]="{
+    'card' : true,
+    'is-active': isActive
+    }" 
+  (click)="clickCard.emit()">
+
+  <div *ngIf="urlCatImage" class="card__img">
+    <img src="{{ urlCatImage }}" 
+        (load)="imageLoaded()">
+  </div>
+  <div *ngIf="isActive" class="card__order">{{ order }}</div>
+
+</div>
