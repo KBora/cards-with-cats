@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Card } from "src/app/card/card";
+import { CatsService } from "src/app/shared/cats.service";
+import { Cat } from "src/app/shared/cats";
 
 @Component({
   selector: 'app-root',
@@ -7,6 +9,10 @@ import { Card } from "src/app/card/card";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  constructor(
+    private catsService: CatsService) { }
+    
   title = 'Cards with Cats ';
 
   cards: Card[] = [
@@ -15,6 +21,9 @@ export class AppComponent {
     new Card(3, false, null),
     new Card(4, false, null)
   ];
+
+  cats: Cat[];
+  
   activeCard: Card = null;
   fetchingCats: boolean = false;
 
@@ -41,5 +50,15 @@ export class AppComponent {
     }
 
   }
+
+  getCats() {
+    this.catsService.getCats(this.cards.length - 1)
+        .subscribe(data => {
+            this.cats = data;
+            console.log(this.cats);
+            // TO DO: load cats into cards
+            // set fetch status
+        }, error => console.log('Unable to getCats'))
+}
 
 }
