@@ -2,3 +2,26 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+nav {
+    margin: 30px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+button {
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    background-color: #007bff;
+    border-color: #007bff;
+    margin-right: 30px;  
+    color: white;
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: #ddd;
+    border-color: #ddd;
+}

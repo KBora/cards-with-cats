@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Card } from "src/app/card/card";
 import { CatsService } from "src/app/shared/cats.service";
 import { Cat } from "src/app/shared/cat";
+import { StateService } from "src/app/shared/state.service";
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,8 @@ import { Cat } from "src/app/shared/cat";
 export class AppComponent {
 
   constructor(
-    private catsService: CatsService) { }
+    private catsService: CatsService, 
+    private stateService: StateService) { }
 
   title = 'Cards with Cats';
 
@@ -25,7 +27,6 @@ export class AppComponent {
   catUrls: string[];
 
   activeCard: Card = null;
-  fetchingCats: boolean = false;
 
   private activeCardPresent() {
     return this.activeCard !== null;
@@ -57,7 +58,7 @@ export class AppComponent {
 
   getCats() {
     // set fetch status
-    this.fetchingCats = true;
+    this.stateService.fetchingCats = true;
 
     this.catsService.getCats(this.cards.length)
       .subscribe(data => {
@@ -69,7 +70,7 @@ export class AppComponent {
         });
 
         // set fetch status
-        this.fetchingCats = false;
+         this.stateService.fetchingCats = false; // to do: set fetchstatus  after all images are loaded
 
       }, error => console.log('Unable to getCats'))
   }
