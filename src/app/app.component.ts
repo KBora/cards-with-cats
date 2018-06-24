@@ -12,8 +12,8 @@ export class AppComponent {
 
   constructor(
     private catsService: CatsService) { }
-    
-  title = 'Cards with Cats ';
+
+  title = 'Cards with Cats';
 
   cards: Card[] = [
     new Card(1, false, null),
@@ -22,13 +22,17 @@ export class AppComponent {
     new Card(4, false, null)
   ];
 
-  cats: Object[];
-  
+  catUrls: string[];
+
   activeCard: Card = null;
   fetchingCats: boolean = false;
 
   private activeCardPresent() {
     return this.activeCard !== null;
+  }
+
+  private nextCardOrder() {
+    return this.cards.length + 1;
   }
 
   onClickCard(card) {
@@ -52,18 +56,26 @@ export class AppComponent {
   }
 
   getCats() {
+    // set fetch status
+    this.fetchingCats = true;
+
     this.catsService.getCats(this.cards.length)
-        .subscribe(data => {
-            this.cats = data;
-            console.log(this.cats);
-            // TO DO: load cats into cards
-            // set fetch status
-            this.cats.forEach((cat, index)  => {
-              this.cards[index].setImage( cat );
-              console.log( cat);
-              console.log(this.cards[index]);
-            });
-        }, error => console.log('Unable to getCats'))
-}
+      .subscribe(data => {
+        this.catUrls = data;
+
+        // load cat url into card
+        this.catUrls.forEach((catUrl, index) => {
+          this.cards[index].setImage(catUrl);
+        });
+
+        // set fetch status
+        this.fetchingCats = false;
+
+      }, error => console.log('Unable to getCats'))
+  }
+
+  addCard() {
+    this.cards.push(new Card(this.nextCardOrder(), false, null));
+  }
 
 }

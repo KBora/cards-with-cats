@@ -8,7 +8,6 @@
             [isActive]="card.isActive"
             [urlCatImage]="card.urlCatImage"
             (clickCard)="onClickCard(card)"
-
     >
     </app-card>
 </div>
@@ -17,7 +16,12 @@
 
 <hr>
 
-<button>Add Card</button>
+<button
+  (click)="addCard()"
+  [attr.disabled]="fetchingCats ? '' : null">Add Card
+</button>
 
 <button
-        (click)="getCats()">Get Cats</button>
+  (click)="getCats()"
+  [attr.disabled]="fetchingCats ? '' : null">Get Cats
+</button>
