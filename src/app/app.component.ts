@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Card } from "src/app/card/card";
 import { CatsService } from "src/app/shared/cats.service";
-import { Cat } from "src/app/shared/cats";
+import { Cat } from "src/app/shared/cat";
 
 @Component({
   selector: 'app-root',
@@ -22,7 +22,7 @@ export class AppComponent {
     new Card(4, false, null)
   ];
 
-  cats: Cat[];
+  cats: Object[];
   
   activeCard: Card = null;
   fetchingCats: boolean = false;
@@ -52,12 +52,17 @@ export class AppComponent {
   }
 
   getCats() {
-    this.catsService.getCats(this.cards.length - 1)
+    this.catsService.getCats(this.cards.length)
         .subscribe(data => {
             this.cats = data;
             console.log(this.cats);
             // TO DO: load cats into cards
             // set fetch status
+            this.cats.forEach((cat, index)  => {
+              this.cards[index].setImage( cat );
+              console.log( cat);
+              console.log(this.cards[index]);
+            });
         }, error => console.log('Unable to getCats'))
 }
 
