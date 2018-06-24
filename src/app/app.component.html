@@ -8,10 +8,14 @@
   (click)="getCats()"
   [attr.disabled]="this.stateService.fetchingCats ? '' : null">Get Cats
 </button>
+
+<div *ngIf="this.stateService.fetchingCats">
+  <img src="/assets/cat-running.gif" alt="Loading cats" class="loading"></div>
 </nav>
 
 
-<div class="cards">
+
+  <div class="cards">
     <app-card
             *ngFor="let card of cards "
             [order]="card.order"

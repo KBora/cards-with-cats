@@ -59,6 +59,7 @@ export class AppComponent {
   getCats() {
     // set fetch status
     this.stateService.fetchingCats = true;
+    this.stateService.imagesToLoad = this.cards.length;
 
     this.catsService.getCats(this.cards.length)
       .subscribe(data => {
@@ -70,7 +71,7 @@ export class AppComponent {
         });
 
         // set fetch status
-         this.stateService.fetchingCats = false; // to do: set fetchstatus  after all images are loaded
+        //this.stateService.fetchingCats = false; // to do: set fetchstatus  after all images are loaded
 
       }, error => console.log('Unable to getCats'))
   }

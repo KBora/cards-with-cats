@@ -4,8 +4,11 @@
 }
 
 nav {
+    display: flex;
     margin: 30px;
     font-family: Helvetica, Arial, sans-serif;
+    height: 100px;
+    align-items: center;
 }
 
 button {
@@ -14,14 +17,19 @@ button {
     font-size: 1rem;
     line-height: 1.5;
     border-radius: .25rem;
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: #333;
+    border-color: #333;
     margin-right: 30px;  
     color: white;
     cursor: pointer;
 }
 
 button:disabled {
-    background-color: #ddd;
-    border-color: #ddd;
+    background-color: #ccc;
+    border-color: #ccc;
+    color: #999;
+}
+
+img.loading {
+    height: 100px;
 }
