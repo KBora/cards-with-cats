@@ -2,23 +2,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { CardComponent } from './card/card.component';
-import { CatsService } from "src/app/shared/cats.service";
-import { HttpClientModule } from "@angular/common/http";
-import { StateService } from "src/app/shared/state.service";
+import { HomeModule } from "src/app/home/home.module";
+import { ServicesModule } from "src/app/services/services.module";
 
 @NgModule({
   declarations: [
-    AppComponent,
-    CardComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
-  ],
-  providers: [
-    CatsService,
-    StateService
+    HomeModule,
+    ServicesModule.forRoot()
   ],
   bootstrap: [AppComponent]
 })

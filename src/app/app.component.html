@@ -1,27 +1,3 @@
-<nav>
-  <button
-  (click)="addCard()"
-  [attr.disabled]="this.stateService.fetchingCats ? '' : null">Add Card
-</button>
-
-<button
-  (click)="getCats()"
-  [attr.disabled]="this.stateService.fetchingCats ? '' : null">Get Cats
-</button>
-
-<div *ngIf="this.stateService.fetchingCats">
-  <img src="/assets/cat-running.gif" alt="Loading cats" class="loading"></div>
-</nav>
-
-
-
-  <div class="cards">
-    <app-card
-            *ngFor="let card of cards "
-            [order]="card.order"
-            [isActive]="card.isActive"
-            [urlCatImage]="card.urlCatImage"
-            (clickCard)="onClickCard(card)"
-    >
-    </app-card>
-</div>
+<app-home>
+  
+</app-home>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Input } from "@angular/core";
 import { Output } from "@angular/core";
 import { EventEmitter } from "@angular/core";
-import { StateService } from "src/app/shared/state.service";
+import { StateService } from "src/app/services/state.service";
 
 @Component({
   selector: 'app-card',
