@@ -21,9 +21,7 @@ export class CatsService {
       .get<string[]>('/api/cats', { params })
       .pipe(
         map(strCat => {     
-          return strCat.map( item => {
-            return new Cat(item);
-          });
+          return strCat.map( url => new Cat(url));
         } ) 
        
       );
